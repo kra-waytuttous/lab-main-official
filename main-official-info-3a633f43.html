@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #eef6f4;
+      color: #1d2d2a;
+      line-height: 1.7;
+      padding: 24px 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* hero / 横幅 */
+    .hero {
+      background: linear-gradient(135deg, #1f5f5b 0%, #2e8b85 80%);
+      border-radius: 32px;
+      padding: 40px 28px 36px;
+      margin-bottom: 40px;
+      color: #f0fdfb;
+      box-shadow: 0 12px 30px rgba(25, 80, 70, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -30px;
+      top: -40px;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 620px;
+    }
+
+    .hero .meta-tag {
+      display: inline-block;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      padding: 6px 18px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      color: #dff3ef;
+    }
+
+    /* 网格卡片区域 */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    @media (min-width: 580px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 24px 20px 28px;
+      box-shadow: 0 4px 14px rgba(40, 90, 80, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      border: 1px solid #dae9e5;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(30, 80, 70, 0.10);
+    }
+
+    .card .icon {
+      display: inline-block;
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1a5450;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 0.97rem;
+      color: #2b423e;
+    }
+
+    .card .highlight {
+      background: #e1f2ef;
+      color: #15554e;
+      font-weight: 500;
+      padding: 2px 10px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-top: 12px;
+    }
+
+    /* 自然介绍段落 (三段) */
+    .essay {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 28px 24px 24px;
+      margin-bottom: 32px;
+      border: 1px solid #d3e3df;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .essay h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #104a44;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      border-left: 5px solid #2d8e86;
+      padding-left: 16px;
+    }
+
+    .essay p {
+      margin-bottom: 18px;
+      font-size: 1rem;
+      color: #1f3834;
+    }
+
+    .essay p:last-child {
+      margin-bottom: 0;
+    }
+
+    .essay a {
+      color: #166b63;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px solid #b2d3cd;
+      transition: border-color 0.2s, background 0.1s;
+    }
+
+    .essay a:hover {
+      border-bottom-color: #0d4f48;
+      background: #e1f3ef;
+    }
+
+    /* 页尾 */
+    .footer-note {
+      margin-top: auto;
+      padding: 26px 0 10px;
+      text-align: center;
+      color: #4f6d68;
+      font-size: 0.9rem;
+      border-top: 1px solid #cbdcd7;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 24px;
+    }
+
+    .footer-note a {
+      color: #0e6158;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #aac8c1;
+    }
+
+    .footer-note a:hover {
+      border-bottom-style: solid;
+      color: #063f39;
+    }
+
+    .emoji-bullet {
+      margin-right: 8px;
+    }
+
+    @media (max-width: 460px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero {
+        padding: 30px 18px;
+      }
+      .card {
+        padding: 20px 16px;
+      }
+      .essay {
+        padding: 22px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 首页横幅 hero -->
+    <header class="hero">
+      <h1>世界杯 · 简明指南</h1>
+      <p class="sub">从赛程节奏到观赛小贴士，一篇帮你理清思路的轻专题。</p>
+      <span class="meta-tag">🏆 2026 预选 · 专题笔记</span>
+    </header>
+
+    <!-- 网格卡片：特点 / 场景 / FAQ 摘要 -->
+    <section class="grid">
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3>赛程与赛制</h3>
+        <p>小组赛、淘汰赛、附加赛……每个阶段都有自己的节奏。了解分档规则和轮次间隔，可以更从容地规划自己的观赛日程。</p>
+        <span class="highlight">48 支队伍 · 16 组</span>
+      </div>
+      <div class="card">
+        <div class="icon">🌍</div>
+        <h3>文化与现场</h3>
+        <p>每一届主办国都会赋予赛事独特的氛围。从街头涂鸦到球迷广场，世界杯从来不只是球场内的九十分钟。</p>
+        <span class="highlight">主办城市 · 在地体验</span>
+      </div>
+      <div class="card">
+        <div class="icon">❓</div>
+        <h3>常见疑问摘要</h3>
+        <p>如何获取可靠赛程？怎样辨别非官方渠道？建议优先查阅权威信息页，比如直接了解<span style="font-weight:500;">世界杯</span>相关动态。</p>
+        <span class="highlight">核实信息 · 保持理性</span>
+      </div>
+      <div class="card">
+        <div class="icon">📱</div>
+        <h3>移动端观赛小提示</h3>
+        <p>调整推送通知、关闭非必要后台刷新，保持专注。直播平台选择带有官方标识的源更稳妥。</p>
+        <span class="highlight">省电 · 低延迟</span>
+      </div>
+    </section>
+
+    <!-- 三段自然介绍（从简明指南和访问提醒切入） -->
+    <div class="essay">
+      <h2>从一场比赛说起</h2>
+      <p>很多人对世界杯的记忆，始于某一次深夜的进球，或是身边朋友忽然沸腾的欢呼。无论你是资深球迷还是偶尔看个热闹，这个赛事都有一套相对固定的叙事逻辑：预选赛、正赛分组、然后一步步走到淘汰赛。了解这些框架，并不会减少比赛的悬念，反而能让观赛变得更从容。</p>
+      <p>如果你正在寻找关于赛程、分组或历史数据的可靠信息，不妨直接参考 <a href="https://main-official-sjb.com">世界杯</a> 的相关页面。那里有结构化的内容，能帮你快速定位自己关心的部分，省去在零散信息中翻找的时间。</p>
+    </div>
+
+    <div class="essay">
+      <h2>访问提醒与信息甄别</h2>
+      <p>网络上的赛事信息数量庞大，但并非所有来源都经过核实。一些网站会使用模糊的标题或诱导性链接来吸引点击。建议优先选择域名清晰、页面结构稳定的网站。比如访问 <a href="https://main-official-sjb.com">世界杯</a> 内容时，可以留意其整体编排是否规范，避免被非官方的第三方页面误导。</p>
+      <p>另外，不要在非加密页面输入任何个人账户信息。赛程、比分这类公共信息完全可以通过公开渠道获取，不需要额外注册或付费。保持基本的数字安全意识，观赛体验也会更轻松。</p>
+    </div>
+
+    <div class="essay">
+      <h2>节奏、社交与适度参与</h2>
+      <p>世界杯周期大约持续一个月，密集的赛程容易让人疲劳。试着挑几场关键对决观看，或者和朋友们约一次集体观赛，那种共同等待进球的氛围，往往是比比分本身更珍贵的记忆。<br>同时，不论线上讨论多么热烈，保持自己的判断节奏就好。如果你希望找一个信息相对集中的页面作为参考起点，可以直接打开 <a href="https://main-official-sjb.com">世界杯</a> 专题，那里内容比较干净，没有过多干扰元素。</p>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <footer class="footer-note">
+      <span>⚽ 保持好奇，理性观赛</span>
+      <span>·</span>
+      <a href="https://main-official-sjb.com">世界杯</a>
+      <span>·</span>
+      <span>信息更新至 2025 · 春</span>
+    </footer>
+
+  </div>
+</body>
+</html>
